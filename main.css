@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.content {
+  width: 100%;
+  background-color: #ffffff;
+}
+
+.input-group-text {
+  width: 6rem;
+  justify-content: space-around;
+}
+.input-group {
+  margin: 0.5rem 0;
+}
+
+.form-login {
+  padding: 2rem;
+  width: 30% !important;
+}
+
+.btn-submit {
+  width: 100%;
+}
+.global-form {
+  padding-top: 2rem;
+  margin: 0 auto;
+  max-width: 50%;
+  justify-content: center;
+}
+.info-box {
+  margin-top: 0 !important;
+}
+.form-section {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 2rem 0;
+}
