@@ -135,3 +135,7 @@ COMMIT;
 select clientes.cod as ID, clientes.name as NOMBRE, cities.name as CIUDAD from clientes, cities where clientes.city = cities.cod;
 SELECT ACTIVIDADES.ID_ACTIVIDAD, ACTIVIDADES.TITULO, DEPARTAMENTO.NOMBRE, ACTIVIDADES.FECHA_REGISTRO, ACTIVIDADES.FECHA_ACTIVIDAD, ACTIVIDADES.HORA_INICIO, ACTIVIDADES.HORA_FINAL, ACTIVIDADES.DESCRIPCION FROM ACTIVIDADES, DEPARTAMENTO WHERE TITULAR='$Titular' AND ACTIVIDADES.DEPARTAMENTO=DEPARTAMENTO.ID_DEPTO ORDER BY FECHA_REGISTRO desc;
 select id as ID, firstname as FirstName, lastname as LastName, pass as Password, email as Email from users ORDER BY id asc;
+
+
+
+INSERT INTO users (id,firstname,lastname,pass,email) values ('$ID_User', '$FName_User', 'LName_User', 'PW_User', 'Email_User');

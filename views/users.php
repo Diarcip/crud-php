@@ -1,70 +1,51 @@
-<div class="form-section">
-  <p class="h1 text-center">Create or edit user info</p> 
-  <div class="form-section-data">
-    <form class="global-form" action="">
-      <div class="form-group">
-        <div class="row g-3 align-items-center">
-          <div class="input-group info-box">
-            <span for="id_user" class="input-group-text">ID</span>
-            <input
-              type="text"
-              id="id_user"
-              name="id_user"
-              class="form-control"
-            />
-          </div>
-          <!-- -------------- -->
-          <div class="input-group info-box">
-            <span for="name_user" class="input-group-text">First name</span>
-            <input
-              type="text"
-              id="firstname_user"
-              name="name_user"
-              class="form-control"
-            />
-          </div>
-          <!-- -------------- -->
-          <div class="input-group info-box">
-            <span for="name_user" class="input-group-text">Last name</span>
-            <input
-              type="text"
-              id="name_user"
-              name="lastname_user"
-              class="form-control"
-            />
-          </div>
-          <!-- -------------- -->
-          <div class="input-group info-box">
-            <span for="name_user" class="input-group-text">Password</span>
-            <input
-              type="password"
-              id="name_user"
-              name="password_user"
-              class="form-control"
-            />
-          </div>
-          <!-- -------------- -->
-          <div class="input-group info-box">
-            <span for="name_user" class="input-group-text">email</span>
-            <input
-              type="email"
-              id="name_user"
-              name="email_user"
-              class="form-control"
-            />
-          </div>
-          <!-- -------------- -->
-        </div>
-      </div>
-    </form>
-  </div>
-  <div class="form-section-buttons">
-    <div class="btn-group" role="group">
-      <button type="button" class="btn btn-success"><i class="fas fa-plus"></i></button>
-      <button type="button" class="btn btn-success" disabled><i class="fas fa-save"></i></button>
-    </div>
-  </div>
-</div>
+<?php
+  if (isset($_GET['delete'])) {
+    $Parameter = $_GET['delete'];
+    Delete_User($Parameter);
+  }
+
+  if (isset($_GET['edit'])) {
+    $Parameter = $_GET['edit'];
+    Get_User($Parameter);
+  }
+
+  function Delete_User($ID_User){
+    include "includes/connection.php";
+    $QueryDelete = "DELETE FROM users WHERE id = '$ID_User'";
+    $Delete = mysqli_query($GLOBALS['CON'],$QueryDelete);
+    ?> <div class="alert alert-success text-center" role="alert">User deleted successfully</div><?php
+  }
+  
+  function Get_User($ID_User){
+
+    $SELECT_User = "SELECT * FROM users WHERE id = '$ID_User'";
+    $ExecSELECT_User = mysqli_query($GLOBALS['CON'],$SELECT_User);
+
+    if($ExecSELECT_User){
+      while($ROW = mysqli_fetch_assoc($ExecSELECT_User)){
+        $ROW_ID = $ROW['id'];
+        $ROW_FN = $ROW['firstname'];
+        $ROW_LN = $ROW['lastname'];
+        $ROW_PW = $ROW['pass'];
+        $ROW_EMAIL = $ROW['email'];
+        return array($ROW_ID, $ROW_FN, $ROW_LN, $ROW_PW, $ROW_EMAIL);
+      }
+    }
+
+  }
+  if(isset($Parameter)){
+    list($ROW_ID, $ROW_FN, $ROW_LN, $ROW_PW, $ROW_EMAIL) = Get_User($Parameter);
+  }else{
+    $ROW_ID = "";
+    $ROW_FN = "";
+    $ROW_LN = "";
+    $ROW_PW = "";
+    $ROW_EMAIL = "";
+  }
+
+  include("form_user.php");
+
+?>
 <table class="table table-striped table-hover">
   <thead>
     <tr>
@@ -78,7 +59,6 @@
   </thead>
   <tbody>
     <?php
-    
     $Query_users_list = "select id as ID, firstname as FirstName, lastname as LastName, pass as Password, email as Email from users ORDER BY id asc";
     $ExecQuery_users_list = mysqli_query($CON,$Query_users_list);
 
@@ -96,19 +76,23 @@
       <td class=""><?php echo $User_Password; ?></td>
       <td class=""><?php echo $User_Email; ?></td>
       <td class="">
-        <div
-          class="btn-group btn-group-sm"
-          role="group"
-        >
-          <button type="button" class="btn btn-danger">
+        <form class="actions" action="index.php" method="GET">
+          <div class="btn-group btn-group-sm" role="group">
+
+
+            <button type="submit" name="delete" value="<?php echo $User_ID;?>" class="btn btn-danger action-delete">
             <i class="fas fa-trash-alt"></i>
-          </button>
-          <button type="button" class="btn btn-success">
-            <i class="fas fa-pen"></i>
-          </button>
-        </div>
+
+
+
+            <button type="submit" name="edit" value="<?php echo $User_ID;?>" class="btn btn-primary action-edit">
+              <i class="fas fa-pen"></i>
+            </button>
+          </div>
+        </form>  
       </td>
     </tr>
+
     <?php }?>
   </tbody>
 </table>

@@ -40,3 +40,7 @@
   justify-content: center;
   margin: 2rem 0;
 }
+.btn-form-user {
+  width: 100px !important;
+  margin: auto;
+}
