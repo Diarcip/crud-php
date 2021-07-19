@@ -1,10 +1,10 @@
 <?php
 function save_user(){
-  $ID_User = $_GET['ID_User'];
-  $FName_User = $_GET['FName_User'];
-  $LName_User = $_GET['LName_User'];
-  $PW_User = $_GET['PW_User'];
-  $Email_User = $_GET['Email_User'];
+  $ID_User = $_POST['ID_User'];
+  $FName_User = $_POST['FName_User'];
+  $LName_User = $_POST['LName_User'];
+  $PW_User = $_POST['PW_User'];
+  $Email_User = $_POST['Email_User'];
 
   $Query_users_list = "SELECT * FROM users WHERE id = '$ID_User'";
   $ExecQuery_users_list = mysqli_query($GLOBALS['CON'],$Query_users_list);
@@ -31,7 +31,7 @@ function save_user(){
 <div class="form-section">
   <p class="h1 text-center">User information</p> 
   <div class="form-section-data">
-    <form class="global-form form-user" action="users.php" method="GET">
+    <form class="global-form form-user" action="users.php" method="POST">
       <div class="form-group">
         <div class="row g-3 align-items-center">
           <div class="input-group info-box">
@@ -87,7 +87,7 @@ function save_user(){
 </div>
 <?php
 
-if(isset($_GET['submit'])){
+if(isset($_POST['submit'])){
   save_user();
 }
 ?>

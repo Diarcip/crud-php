@@ -1,8 +1,8 @@
 <?php
 function save_Client(){
-  $COD_Client = $_GET['COD_Client'];
-  $Name_Client = $_GET['Name_Client'];
-  $City_Client = $_GET['City_Client'];
+  $COD_Client = $_POST['COD_Client'];
+  $Name_Client = $_POST['Name_Client'];
+  $City_Client = $_POST['City_Client'];
 
   $Query_Clients_list = "SELECT * FROM clientes WHERE cod = '$COD_Client'";
   $ExecQuery_Clients_list = mysqli_query($GLOBALS['CON'],$Query_Clients_list);
@@ -33,7 +33,7 @@ function save_Client(){
 <div class="form-section">
   <p class="h1 text-center">Client information</p> 
   <div class="form-section-data">
-    <form class="global-form form-Client" action="clients.php" method="GET">
+    <form class="global-form form-Client" action="clients.php" method="POST">
       <div class="form-group">
         <div class="row g-3 align-items-center">
           <div class="input-group info-box">
@@ -83,7 +83,7 @@ function save_Client(){
 </div>
 <?php
 
-if(isset($_GET['submit'])){
+if(isset($_POST['submit'])){
   save_Client();
 }
 ?>

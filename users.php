@@ -18,13 +18,13 @@
   session_start();
   include "includes/connection.php";
   include ("views/nav.php");
-  if (isset($_GET['delete'])) {
-    $Parameter = $_GET['delete'];
+  if (isset($_POST['delete'])) {
+    $Parameter = $_POST['delete'];
     Delete_User($Parameter);
   }
 
-  if (isset($_GET['edit'])) {
-    $Parameter = $_GET['edit'];
+  if (isset($_POST['edit'])) {
+    $Parameter = $_POST['edit'];
     Get_User($Parameter);
   }
 
@@ -98,7 +98,7 @@ if($SessionStarted){
       <td class=""><?php echo $User_Password; ?></td>
       <td class=""><?php echo $User_Email; ?></td>
       <td class="">
-        <form class="actions" action="users.php" method="GET">
+        <form class="actions" action="users.php" method="POST">
           <div class="btn-group btn-group-sm" role="group">
 
             <button type="submit" name="delete" value="<?php echo $User_ID;?>" class="btn btn-danger action-delete-user">

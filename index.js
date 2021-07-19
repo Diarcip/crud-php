@@ -7,7 +7,7 @@ $(document).ready(function () {
       data = {
         action: clickBtnValue,
       };
-    $.get(ajaxurl, data, function (response) {
+    $.post(ajaxurl, data, function (response) {
       console.log(clickBtnValue);
     });
   });
@@ -20,7 +20,7 @@ $(document).ready(function () {
       data = {
         action: clickBtnValue,
       };
-    $.get(ajaxurl, data, function (response) {
+    $.post(ajaxurl, data, function (response) {
       console.log(clickBtnValue);
     });
   });
@@ -35,7 +35,7 @@ $(document).ready(function () {
       data = {
         action: clickBtnValue,
       };
-    $.get(ajaxurl, data, function (response) {
+    $.post(ajaxurl, data, function (response) {
       console.log(clickBtnValue);
     });
   });
@@ -48,7 +48,7 @@ $(document).ready(function () {
       data = {
         action: clickBtnValue,
       };
-    $.get(ajaxurl, data, function (response) {
+    $.post(ajaxurl, data, function (response) {
       console.log(clickBtnValue);
     });
   });
@@ -63,7 +63,7 @@ $(document).ready(function () {
       data = {
         action: clickBtnValue,
       };
-    $.get(ajaxurl, data, function (response) {
+    $.post(ajaxurl, data, function (response) {
       console.log(clickBtnValue);
     });
   });
@@ -76,7 +76,7 @@ $(document).ready(function () {
       data = {
         action: clickBtnValue,
       };
-    $.get(ajaxurl, data, function (response) {
+    $.post(ajaxurl, data, function (response) {
       console.log(clickBtnValue);
     });
   });

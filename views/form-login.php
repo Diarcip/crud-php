@@ -1,4 +1,4 @@
-<form class="container-fluid form-login" action="index.php" method="GET">
+<form class="container-fluid form-login" action="index.php" method="POST">
 <p class="h1 text-center">Log in</p>  
 <div class="input-group">
     <span class="input-group-text" id="basic-addon1">User</span>
@@ -15,8 +15,8 @@
 <?php
 
 function login(){
-  $ID_User = $_GET['ID_User'];
-  $PW_User = $_GET['PW_User'];
+  $ID_User = $_POST['ID_User'];
+  $PW_User = $_POST['PW_User'];
   $Validation = "select * from users where ID = '$ID_User' and pass='$PW_User'";
   $Query_login = mysqli_query($GLOBALS['CON'],$Validation);
   if(mysqli_num_rows($Query_login)>0){
@@ -30,8 +30,8 @@ function login(){
   }
 
 } 
-if(isset($_GET['submit'])){
-  if(!isset($_SESSION['ID']) && !empty($_GET['ID_User']) && !empty($_GET['PW_User'])){
+if(isset($_POST['submit'])){
+  if(!isset($_SESSION['ID']) && !empty($_POST['ID_User']) && !empty($_POST['PW_User'])){
     login();
   }else{
       header("Location:index.php");

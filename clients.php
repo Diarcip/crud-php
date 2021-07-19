@@ -18,13 +18,13 @@
     include ("views/nav.php");
 
 
-    if (isset($_GET['delete'])) {
-      $Parameter = $_GET['delete'];
+    if (isset($_POST['delete'])) {
+      $Parameter = $_POST['delete'];
       Delete_Client($Parameter);
     }
 
-    if (isset($_GET['edit'])) {
-      $Parameter = $_GET['edit'];
+    if (isset($_POST['edit'])) {
+      $Parameter = $_POST['edit'];
       Get_Client($Parameter);
     }
 
@@ -88,7 +88,7 @@ if($SessionStarted){
         <td class=""><?php echo $Client_Name; ?></td>
         <td class=""><?php echo $Client_City; ?></td>
         <td class="">
-          <form class="actions" action="clients.php" method="GET">
+          <form class="actions" action="clients.php" method="POST">
             <div class="btn-group btn-group-sm" role="group">
 
 

@@ -1,7 +1,7 @@
 <?php
 function save_City(){
-  $COD_City = $_GET['COD_City'];
-  $Name_City = $_GET['Name_City'];
+  $COD_City = $_POST['COD_City'];
+  $Name_City = $_POST['Name_City'];
 
   $Query_Cities_list = "SELECT * FROM cities WHERE cod = '$COD_City'";
   $ExecQuery_Cities_list = mysqli_query($GLOBALS['CON'],$Query_Cities_list);
@@ -28,7 +28,7 @@ function save_City(){
 <div class="form-section d-flex flex-column">
   <p class="h1 text-center">City information</p>
   <div class="form-section-data">
-    <form class="global-form form-City" action="cities.php" method="GET">
+    <form class="global-form form-City" action="cities.php" method="POST">
       <div class="form-group">
         <div class="row g-3 align-items-center">
           <div class="input-group info-box">
@@ -54,7 +54,7 @@ function save_City(){
 </div>
 <?php
 
-if(isset($_GET['submit'])){
+if(isset($_POST['submit'])){
   save_City();
 }
 ?>

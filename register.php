@@ -26,7 +26,7 @@
     <div class="container">
       <div class="content">
         
-        <form class="container-fluid form-register" action="register.php" method="GET">
+        <form class="container-fluid form-register" action="register.php" method="POST">
         <p class="h1 text-center">Register</p>  
         <div class="input-group">
 
@@ -81,11 +81,11 @@
         <?php
 
         function register(){
-          $ID_User = $_GET['ID_User'];
-          $FN_User = $_GET['FN_User'];
-          $LN_User = $_GET['LN_User'];
-          $PW_User = $_GET['PW_User'];
-          $Email_User = $_GET['Email_User'];
+          $ID_User = $_POST['ID_User'];
+          $FN_User = $_POST['FN_User'];
+          $LN_User = $_POST['LN_User'];
+          $PW_User = $_POST['PW_User'];
+          $Email_User = $_POST['Email_User'];
           
           $UserQuery = "select * from users where id = '$ID_User'";
           $ExecUserQuery = mysqli_query($GLOBALS['CON'],$UserQuery);
@@ -104,8 +104,8 @@
           }
 
         } 
-        if(isset($_GET['submit'])){
-          if(!isset($_SESSION['id']) && !empty($_GET['ID_User']) && !empty($_GET['PW_User'])){
+        if(isset($_POST['submit'])){
+          if(!isset($_SESSION['id']) && !empty($_POST['ID_User']) && !empty($_POST['PW_User'])){
             register();
           }else{
               header("Location:index.php");

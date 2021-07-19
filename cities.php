@@ -18,13 +18,13 @@
   session_start();
   include "includes/connection.php";
   include ("views/nav.php");
-  if (isset($_GET['delete'])) {
-    $Parameter = $_GET['delete'];
+  if (isset($_POST['delete'])) {
+    $Parameter = $_POST['delete'];
     Delete_City($Parameter);
   }
 
-  if (isset($_GET['edit'])) {
-    $Parameter = $_GET['edit'];
+  if (isset($_POST['edit'])) {
+    $Parameter = $_POST['edit'];
     Get_User($Parameter);
   }
 
@@ -82,7 +82,7 @@ if($SessionStarted){
       <th scope="row" class=""><?php echo $COD_City; ?></th>
       <td class=""><?php echo $Name_City; ?></td>
       <td class="">
-        <form class="actions" action="cities.php" method="GET">
+        <form class="actions" action="cities.php" method="POST">
           <div class="btn-group btn-group-sm" role="group">
 
             <button type="submit" name="delete" value="<?php echo $COD_City;?>" class="btn btn-danger action-delete-cities">
