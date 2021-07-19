@@ -1,4 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prueba Técnica</title>
+    <script src="https://kit.fontawesome.com/0c6518fdab.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="main.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
+  </head>
+  <body>
+
 <?php
+
+  session_start();
+  include "includes/connection.php";
+  include ("views/nav.php");
   if (isset($_GET['delete'])) {
     $Parameter = $_GET['delete'];
     Delete_User($Parameter);
@@ -41,12 +60,15 @@
     $ROW_LN = "";
     $ROW_PW = "";
     $ROW_EMAIL = "";
-  }
-
-  include("form_user.php");
+  }?>
+<div class="container">
+    <div class="content">
+<?php
+if($SessionStarted){
+  include("views/form_user.php");
 
 ?>
-<table class="table table-striped table-hover">
+<table class="table table-striped table-hover" data-search="true">
   <thead>
     <tr>
       <th scope="col">ID</th>
@@ -76,18 +98,16 @@
       <td class=""><?php echo $User_Password; ?></td>
       <td class=""><?php echo $User_Email; ?></td>
       <td class="">
-        <form class="actions" action="index.php" method="GET">
+        <form class="actions" action="users.php" method="GET">
           <div class="btn-group btn-group-sm" role="group">
 
-
-            <button type="submit" name="delete" value="<?php echo $User_ID;?>" class="btn btn-danger action-delete">
+            <button type="submit" name="delete" value="<?php echo $User_ID;?>" class="btn btn-danger action-delete-user">
             <i class="fas fa-trash-alt"></i>
 
-
-
-            <button type="submit" name="edit" value="<?php echo $User_ID;?>" class="btn btn-primary action-edit">
+            <button type="submit" name="edit" value="<?php echo $User_ID;?>" class="btn btn-primary action-edit-user">
               <i class="fas fa-pen"></i>
             </button>
+
           </div>
         </form>  
       </td>
@@ -96,3 +116,8 @@
     <?php }?>
   </tbody>
 </table>
+<?php
+}else{
+  include ("views/form-login.php");
+}
+?>

@@ -44,3 +44,7 @@
   width: 100px !important;
   margin: auto;
 }
+.welcome {
+  text-align: center;
+  margin: 8rem 0;
+}

@@ -22,53 +22,14 @@
     $SessionStarted = false;
   }
   ?>
+      <?php include "views/nav.php"?>
     <div class="container">
-      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="index.php"
-            >Welcome
-            <?php 
-            if($SessionStarted){
-              echo $_SESSION['firstname'];
-            }
-            ?>
-          </a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a href="index.php" class="nav-link">Users</a>
-              </li>
-              <li class="nav-item">
-                <a href="" class="nav-link">Clients</a>
-              </li>
-              <li class="nav-item">
-                <a href="" class="nav-link">Cities</a>
-              </li>
-            </ul>
-            <a class="btn btn-primary" role="button" href="logout.php"
-              >Log out</a
-            >
-          </div>
-        </div>
-      </nav>
-
       <div class="content">
         <?php
           if(!$SessionStarted){
             include "views/form-login.php";
           }else{
-            include "views/users.php";
+            include "views/welcome.php";
           }
         ?>
       </div>

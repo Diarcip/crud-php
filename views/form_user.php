@@ -29,9 +29,9 @@ function save_user(){
 }
 ?>
 <div class="form-section">
-  <p class="h1 text-center">User info</p> 
+  <p class="h1 text-center">User information</p> 
   <div class="form-section-data">
-    <form class="global-form form-user" action="index.php" method="GET">
+    <form class="global-form form-user" action="users.php" method="GET">
       <div class="form-group">
         <div class="row g-3 align-items-center">
           <div class="input-group info-box">

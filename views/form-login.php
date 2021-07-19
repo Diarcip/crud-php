@@ -9,6 +9,7 @@
     <input name="PW_User" class="form-control" type="password">
   </div>
   <input class="btn btn-primary btn-submit" type="submit" value="Submit" name="submit">
+  <a class="btn btn-success btn-submit" href="register.php" role="button">Register</a>
 </form>
 
 <?php
@@ -22,6 +23,9 @@ function login(){
     $ROW = mysqli_fetch_array($Query_login);
     $_SESSION['id'] = $ROW['id'];
     $_SESSION['firstname'] = $ROW['firstname'];
+    $_SESSION['users'] = "novisible";
+    $_SESSION['clients'] = "novisible";
+    $_SESSION['cities'] = "novisible";
     header("Location:index.php");
   }
 
